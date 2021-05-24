@@ -1,0 +1,65 @@
+// This file is the descriptor for the Custom code recipe calcuate-volatility
+{
+    // Meta data for display purposes
+    "meta": {
+        // label: name of the recipe as displayed, should be short
+        "label": "Calcuate volatility",
+        // description: longer string to help end users understand what this recipe does
+        "description": "takes in prices and calculates volatility",
+        // icon: must be one of the FontAwesome 3.2.1 icons, complete list here at https://fontawesome.com/v3.2.1/icons/
+        "icon": "icon-puzzle-piece"
+    },
+
+    "kind": "PYTHON",
+    
+
+    // Inputs and outputs are defined by roles. In the recipe's I/O tab, the user can associate one
+    // or more dataset to each input and output role.
+
+    // The "arity" field indicates whether the user can associate several datasets to the role ('NARY')
+    // or at most one ('UNARY'). The "required" field indicates whether the user is allowed to
+    // associate no dataset with the role.
+
+    "inputRoles": [
+        {
+            "name": "input",
+            "label": "input datase",
+            "description": "dataset containing raw prices",
+            "arity": "UNARY",
+            "required": true,
+            "acceptsDataset": true
+        }
+    ],
+
+    "outputRoles": [
+        {
+            "name": "output",
+            "label": "output of volatility calculation",
+            "description": "what main output means",
+            "arity": "UNARY",
+            "required": false,
+            "acceptsDataset": true
+        }
+    ],
+
+    "params": [
+        {
+            "name": "ObservationDays",
+            "label": "No of trading days",
+            "type": "INT",
+            "defaultValue": 252,
+            "description": "Number of observation days e.g. 252 for a normal calendar year",
+            "mandatory": true
+        },
+        {
+            "name": "RollingPeriod",
+            "label": "Lookback period for calculation",
+            "type": "INT",
+            "defaultValue": 252,
+            "description": "look back period for rolling ca e.g. 252 for a normal calendar year",
+            "mandatory": true
+
+        }
+    ]
+
+}
