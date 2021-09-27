@@ -26,5 +26,5 @@ def calc_returns(prices, return_type='CumulativeReturns'):
         returns = 1+(returns.cumsum())
         returns = pd.DataFrame(returns)
     
-    returns.columns = return_type   
+    returns.columns = [return_type]
     return returns
