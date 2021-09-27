@@ -24,6 +24,7 @@ def calc_returns(prices, return_type='CumulativeReturns'):
     elif return_type=='CumulativeReturns':
         returns = returns/price_shifted
         returns = 1+(returns.cumsum())
-        return pd.DataFrame(returns)
-        
+        returns = pd.DataFrame(returns)
+    
+    returns.columns = return_type   
     return returns
