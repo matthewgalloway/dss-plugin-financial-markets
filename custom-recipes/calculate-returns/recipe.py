@@ -17,6 +17,8 @@ return_type = get_recipe_config()['return_type']
 date_column_name = recipe_config.get("date_col")
 price_column_name = recipe_config.get("price_col")
 
+print(input_ds.columns)
+
 price_ds = input_ds[[date_column_name, price_column_name]]
 
 returns = calc_returns(price_ds, return_type=return_type)
