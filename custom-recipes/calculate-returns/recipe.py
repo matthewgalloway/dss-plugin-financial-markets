@@ -17,15 +17,11 @@ return_type = get_recipe_config()['return_type']
 date_column_name = recipe_config.get("date_col")
 price_column_name = recipe_config.get("price_col")
 
-print(input_ds.columns)
-
-price_ds = input_ds[price_column_name]
-
-returns = calc_returns(price_ds, return_type=return_type)
+returns = calc_returns(input_ds[price_column_name], return_type=return_type)
 
 
-output_df = pd.concat([price_ds, returns], axis=1, join='inner')
-print(output_df.columns)
+output_df = pd.concat([input_ds, returns], axis=1, join='inner')
+
 
 # Write recipe outputs
 
