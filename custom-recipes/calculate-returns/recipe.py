@@ -24,7 +24,7 @@ price_ds = input_ds[price_column_name]
 returns = calc_returns(price_ds, return_type=return_type)
 
 
-output_df = pd.concat([price_ds, returns], axis=1, join='inner', keys=date_column_name)
+output_df = pd.concat([price_ds, returns], axis=1, join='inner')
 
 # Write recipe outputs
 
