@@ -7,6 +7,8 @@ from finance.data_management import get_input_data_and_set_date_index
 from finance.calculations import calc_returns
 from dataiku.customrecipe import *
 
+recipe_config = get_recipe_config()
+
 input_ds_str = get_input_names_for_role('input_dataset')
 input_ds = get_input_data_and_set_date_index(input_ds_str[0])
 
