@@ -19,7 +19,7 @@ price_column_name = recipe_config.get("price_col")
 
 print(input_ds.columns)
 
-price_ds = input_ds[[date_column_name, price_column_name]]
+price_ds = input_ds[price_column_name]
 
 returns = calc_returns(price_ds, return_type=return_type)
 
