@@ -25,6 +25,7 @@ returns = calc_returns(price_ds, return_type=return_type)
 
 
 output_df = pd.concat([price_ds, returns], axis=1, join='inner')
+print(output_df.columns)
 
 # Write recipe outputs
 
