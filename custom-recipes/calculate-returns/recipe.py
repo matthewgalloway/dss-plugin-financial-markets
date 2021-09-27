@@ -6,18 +6,25 @@ from dataiku import pandasutils as pdu
 from finance.data_management import get_input_data_and_set_date_index
 from finance.calculations import calc_returns
 
-input_ds_str = get_input_names_for_role('input_ds')
+input_ds_str = get_input_names_for_role('input_dataset')
 input_ds = get_input_data_and_set_date_index(input_ds_str[0])
 
 return_type = get_recipe_config()['return_type']
 
+date_column_name = recipe_config.get("date_col")
+price_column_name = recipe_config.get("price_col")
 
-returns = calc_returns(input_ds, return_type=return_type)
+price_ds = input_ds[[date_column_name, price_column_name]]
+
+returns = calc_returns(price_ds, return_type=return_type)
+
+
+output_df = pd.concat([price_ds, returns], axis=1, join='inner', keys=date_column_name)
 
 # Write recipe outputs
 
 
 # For outputs, the process is the same:
-output_ds_str = get_output_names_for_role('output_ds')
+output_ds_str = get_output_names_for_role('output_dataset')
 output_ds = dataiku.Dataset(output_ds_str[0])
 output_ds.write_with_schema(returns.reset_index())
