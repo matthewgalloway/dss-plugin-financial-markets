@@ -37,11 +37,17 @@
             "columnRole": "input_dataset"
         },
         {
+            "name": "all_columns",
+            "label": "Use all columns for calculation",
+            "type": "BOOLEAN"
+        },
+        {
             "name": "price_col",
             "label": "Price Column",
             "type": "COLUMN",
-            "mandatory": true,
-            "columnRole": "input_dataset"
+            "mandatory": false,
+            "columnRole": "input_dataset",
+            "visibilityCondition" : "!model.useToken"
         },
         {
             "name": "return_type",
