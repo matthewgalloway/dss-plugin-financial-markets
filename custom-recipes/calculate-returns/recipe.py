@@ -21,7 +21,7 @@ if all_columns:
 else:
     # calculates returns
     returns = calc_returns(input_ds[price_column_name], return_type=return_type)
-
+    returns.columns = [return_type]
     # concats with orginal df
     output_df = pd.concat([input_ds, returns], axis=1, join='inner')
 
