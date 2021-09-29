@@ -14,12 +14,16 @@ input_ds = get_input_data_and_set_date_index(input_ds_str[0])
 return_type = get_recipe_config()['return_type']
 date_column_name = recipe_config.get("date_col")
 price_column_name = recipe_config.get("price_col")
+all_columns = get_recipe_config()['all_columns']
 
-# calculates returns
-returns = calc_returns(input_ds[price_column_name], return_type=return_type)
+if all_columns:
+     output_df = calc_returns(input_ds[price_column_name], return_type=return_type)
+else:
+    # calculates returns
+    returns = calc_returns(input_ds[price_column_name], return_type=return_type)
 
-# concats with orginal df
-output_df = pd.concat([input_ds, returns], axis=1, join='inner')
+    # concats with orginal df
+    output_df = pd.concat([input_ds, returns], axis=1, join='inner')
 
 
 
