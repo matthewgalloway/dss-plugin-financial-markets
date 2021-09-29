@@ -47,7 +47,7 @@
             "type": "COLUMN",
             "mandatory": false,
             "columnRole": "input_dataset",
-            "visibilityCondition" : "model.useToken"
+            "visibilityCondition" : "model.all_columns"
         },
         {
             "name": "return_type",
