@@ -17,7 +17,7 @@ price_column_name = recipe_config.get("price_col")
 all_columns = get_recipe_config()['all_columns']
 print(f'All columns var is {all_columns}')
 if all_columns:
-     output_df = calc_returns(input_ds[price_column_name], return_type=return_type)
+     output_df = calc_returns(input_ds, return_type=return_type)
 else:
     # calculates returns
     returns = calc_returns(input_ds[price_column_name], return_type=return_type)
